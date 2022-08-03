@@ -1,8 +1,6 @@
 package br.edu.ifsp.scl.ads.pdm.preparacao.contador;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,22 +17,12 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
 
-        activityMainBinding.inicialEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                contador = Integer.parseInt(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+        activityMainBinding.inicialCb.setOnClickListener((view) ->{
+                    if (activityMainBinding.inicialCb.isChecked()) {
+                        contador = Integer.parseInt(activityMainBinding.inicialCb.getText().toString());
+                    }
+                }
+        );
 
         activityMainBinding.cliqueBt.setOnClickListener(new View.OnClickListener() {
             @Override
