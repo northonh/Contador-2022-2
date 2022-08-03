@@ -2,7 +2,7 @@ package br.edu.ifsp.scl.ads.pdm.preparacao.contador;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RadioButton;
+import android.widget.AdapterView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,9 +18,17 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
 
-        activityMainBinding.zeroRb.setOnClickListener( view -> contador = 0);
-        activityMainBinding.dezRb.setOnClickListener( view -> contador = 10);
+        activityMainBinding.inicialSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                contador = (i == 0)? 0 : (i == 1)? 5 : 10;
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         activityMainBinding.cliqueBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
