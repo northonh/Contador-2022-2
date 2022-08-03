@@ -2,6 +2,7 @@ package br.edu.ifsp.scl.ads.pdm.preparacao.contador;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,12 +18,8 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
 
-        activityMainBinding.inicialCb.setOnClickListener((view) ->{
-                    if (activityMainBinding.inicialCb.isChecked()) {
-                        contador = Integer.parseInt(activityMainBinding.inicialCb.getText().toString());
-                    }
-                }
-        );
+        activityMainBinding.zeroRb.setOnClickListener( view -> contador = 0);
+        activityMainBinding.dezRb.setOnClickListener( view -> contador = 10);
 
         activityMainBinding.cliqueBt.setOnClickListener(new View.OnClickListener() {
             @Override
